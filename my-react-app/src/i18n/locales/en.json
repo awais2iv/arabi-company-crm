@@ -1,0 +1,114 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "agents": "Agents",
+    "workOrders": "Work Orders",
+    "reports": "Reports",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "agents": {
+    "title": "Agent Analytics Dashboard",
+    "totalCalls": "Total Calls",
+    "avgQuality": "Avg Quality",
+    "highRisk": "High Risk",
+    "avgEmpathy": "Avg Empathy",
+    "performance": "Performance",
+    "excellent": "Excellent",
+    "good": "Good",
+    "needsImprovement": "Needs Improvement",
+    "viewDetails": "View Details"
+  },
+  "calls": {
+    "title": "Call Records",
+    "totalCalls": "total calls",
+    "resolved": "resolved",
+    "loading": "Loading calls...",
+    "error": "Failed to load calls",
+    "noRecords": "No call records",
+    "quality": "Quality",
+    "duration": "min",
+    "resolved_status": "Resolved",
+    "unresolved_status": "Unresolved",
+    "highRisk": "High Risk",
+    "at": "at"
+  },
+  "callDetail": {
+    "backToAgent": "Back to Agent",
+    "tabs": {
+      "overview": "Overview",
+      "metrics": "Quality",
+      "empathy": "Empathy",
+      "transcript": "Transcript"
+    },
+    "overview": {
+      "callInformation": "Call Information",
+      "agent": "Agent",
+      "callType": "Call Type",
+      "date": "Date",
+      "time": "Time",
+      "duration": "Duration",
+      "resolutionRisk": "Resolution & Risk",
+      "status": "Status",
+      "nextStep": "Next Step",
+      "riskLevel": "Risk Level",
+      "high": "High",
+      "low": "Low",
+      "riskReasons": "Risk Reasons:",
+      "problem": "Problem",
+      "customerIntent": "Customer Intent",
+      "agentAction": "Agent Action",
+      "callStory": "Call Story",
+      "noProblem": "No problem description available.",
+      "noIntent": "No customer intent recorded.",
+      "noAction": "No agent action recorded.",
+      "noStory": "No call story available."
+    },
+    "metrics": {
+      "overallQuality": "Overall Quality Score",
+      "basedOn": "Based on call structure and performance",
+      "outOf": "out of 100",
+      "excellent": "Excellent",
+      "good": "Good",
+      "average": "Average",
+      "needsImprovement": "Needs Improvement",
+      "qualityBreakdown": "Quality Breakdown",
+      "detailedAnalysis": "Detailed analysis of call quality components"
+    },
+    "empathy": {
+      "title": "Empathy & Communication",
+      "analysis": "Analysis of emotional intelligence and tone",
+      "score": "Empathy Score",
+      "toneAssessment": "Tone Assessment",
+      "politeness": "Politeness Level",
+      "detectedPhrases": "Empathy Phrases Detected",
+      "noPhrases": "No empathy phrases recorded"
+    },
+    "transcript": {
+      "title": "Call Transcript",
+      "description": "Complete conversation record",
+      "agent": "Agent",
+      "customer": "Customer",
+      "noTranscript": "No transcript available"
+    },
+    "tooltips": {
+      "problem": "The main issue or complaint reported by the customer during the call",
+      "customerIntent": "What the customer wants to achieve or the outcome they are seeking from the call",
+      "agentAction": "The specific actions taken by the agent to address the customer's needs and resolve the issue",
+      "callStory": "A narrative summary of the entire call conversation, capturing the key events and flow of the interaction",
+      "qualityScore": "An overall rating of the call quality based on agent performance, customer satisfaction, and adherence to best practices",
+      "empathyScore": "A measure of the agent's ability to understand and respond to customer emotions with appropriate empathy and communication skills",
+      "transcript": "The complete word-for-word record of the conversation between the agent and customer, showing the full dialogue exchange"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "noData": "No data available",
+    "select": "Select",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "refresh": "Refresh"
+  }
+}

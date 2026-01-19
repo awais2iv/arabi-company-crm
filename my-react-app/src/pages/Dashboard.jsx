@@ -14,11 +14,9 @@ import {
   ArrowDownRight,
   Calendar
 } from 'lucide-react';
-import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useGetWorkOrdersQuery } from '@/features/workOrders/workOrdersApiSlice';
 import { useGetAgentsQuery, useGetAllKpisQuery } from '@/features/kpis/kpisApiSlice';
-
-const COLORS = ['#10b981', '#f59e0b', '#3b82f6', '#ef4444'];
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -93,7 +91,7 @@ const Dashboard = () => {
     highRiskCount: highRiskCalls.length
   };
   
-  // Work order status distribution for pie chart - include all possible statuses
+  // Work order status distribution for bar chart - include all possible statuses
   const allStatuses = [
     'Completed',
     'Quotation',
@@ -123,10 +121,9 @@ const Dashboard = () => {
   }, {});
 
   const statusDistribution = Object.entries(fullStatusCounts)
-    .map(([name, value], index) => ({
+    .map(([name, value]) => ({
       name,
-      value,
-      color: COLORS[index % COLORS.length]
+      value
     }))
     .filter(item => item.value > 0) // Only show statuses with work orders
     .sort((a, b) => b.value - a.value); // Sort by count descending
@@ -242,23 +239,29 @@ const Dashboard = () => {
             </div>
           ) : statusDistribution.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={statusDistribution}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {statusDistribution.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
+              <BarChart 
+                data={statusDistribution}
+                margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis 
+                  dataKey="name" 
+                  angle={-45} 
+                  textAnchor="end" 
+                  height={80}
+                  interval={0}
+                />
+                <YAxis />
+                <Tooltip 
+                  formatter={(value, name) => [value, 'Count']}
+                  labelFormatter={(label) => `Status: ${label}`}
+                />
+                <Bar 
+                  dataKey="value" 
+                  fill="#3b82f6"
+                  name="Work Orders"
+                />
+              </BarChart>
             </ResponsiveContainer>
           ) : (
             <div className="h-64 flex items-center justify-center text-gray-500">

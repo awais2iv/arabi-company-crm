@@ -249,6 +249,7 @@ export const getWorkOrderStatistics = async (filters = {}) => {
 
 /**
  * Build query filters for work order search
+ * NOTE: This function does NOT filter by user - it returns work orders for ALL users
  */
 export const buildWorkOrderQuery = (filters) => {
   const query = { isDeleted: false };

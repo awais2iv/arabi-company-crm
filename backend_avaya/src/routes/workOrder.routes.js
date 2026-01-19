@@ -51,7 +51,7 @@ router.route('/technician/:technicianId')
 router.route('/supervisor/:supervisorId')
   .get(verifyJWT, getWorkOrdersBySupervisor);
 
-// Main CRUD routes
+// Main CRUD routes - Returns ALL work orders for all authenticated users
 router.route('/')
   .get(verifyJWT, getAllWorkOrders)
   .post(verifyJWT, validateCreateWorkOrder, createWorkOrder);

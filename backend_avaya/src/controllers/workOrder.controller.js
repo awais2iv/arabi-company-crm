@@ -55,8 +55,9 @@ const createWorkOrder = asyncHandler(async (req, res) => {
 
 /**
  * Get all work orders with filtering, pagination, and search
+ * Returns ALL work orders regardless of user/creator
  * @route GET /api/v1/work-orders
- * @access Private
+ * @access Private (All authenticated users)
  */
 const getAllWorkOrders = asyncHandler(async (req, res) => {
   const {
@@ -67,7 +68,7 @@ const getAllWorkOrders = asyncHandler(async (req, res) => {
     ...filters
   } = req.query;
 
-  // Build query
+  // Build query - NO user-based filtering, returns ALL work orders
   const query = buildWorkOrderQuery(filters);
 
   // Calculate pagination

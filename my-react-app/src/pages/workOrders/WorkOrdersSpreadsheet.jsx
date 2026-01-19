@@ -20,7 +20,7 @@ const WorkOrdersSpreadsheet = () => {
     (currentUser.name || currentUser.username || currentUser.email || 'Unknown User') : 
     'Unknown User';
   
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(1); // Keep for potential future use, but not used now
   const [selectedCell, setSelectedCell] = useState(null);
   const [editingCell, setEditingCell] = useState(null);
   const [editValue, setEditValue] = useState('');
@@ -35,7 +35,7 @@ const WorkOrdersSpreadsheet = () => {
   const cellInputRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const { data: workOrdersData, isLoading, refetch } = useGetWorkOrdersQuery({ page, limit: 50 });
+  const { data: workOrdersData, isLoading, refetch } = useGetWorkOrdersQuery({ page: 1, limit: 1000 }); // Show all records, not paginated
   const [updateWorkOrder] = useUpdateWorkOrderMutation();
   const [deleteWorkOrder] = useDeleteWorkOrderMutation();
   const [createWorkOrder, { isLoading: isCreating }] = useCreateWorkOrderMutation();
@@ -1150,30 +1150,12 @@ const WorkOrdersSpreadsheet = () => {
         </div>
       </div>
 
-      {/* Footer with Pagination */}
-      {pagination.totalPages > 1 && (
-        <div className="bg-white border-t border-gray-200 px-4 py-3 flex items-center justify-between">
-          <div className="text-sm text-gray-600">
-            Page {pagination.currentPage} of {pagination.totalPages}
-          </div>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setPage(p => p - 1)}
-              disabled={!pagination.hasPrevPage}
-              className="px-3 py-1 bg-white border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setPage(p => p + 1)}
-              disabled={!pagination.hasNextPage}
-              className="px-3 py-1 bg-white border border-gray-300 rounded hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+      {/* Footer - All records displayed */}
+      <div className="bg-white border-t border-gray-200 px-4 py-3">
+        <div className="text-sm text-gray-600">
+          Showing all {workOrders.length} work order records
         </div>
-      )}
+      </div>
 
     </div>
   );
